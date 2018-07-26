@@ -7,8 +7,11 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.touch.LongPressOptions;
 import io.appium.java_client.touch.offset.ElementOption;
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.AndroidKeyCode;
 public class dragAndDrop extends base {
 
+	@SuppressWarnings("deprecation")
 	public static void main(String[] args) throws MalformedURLException { 
 		// TODO Auto-generated method stub
 		AndroidDriver<AndroidElement> driver=Capabilities();
@@ -24,10 +27,15 @@ public class dragAndDrop extends base {
 				.withDuration(Duration.ofMillis(4000))
 				.withElement(dragDopOption);
 		t.longPress(timeLongPressOption).perform().moveTo(dragDopOption) .release().perform();
+		//From here these are less use elements
 		//getContext use for finding the type of application like native, ionic, hybrid
 		driver.getContext();
 		//get orientation
 		System.out.println(driver.getOrientation());
+		System.out.println(driver.isDeviceLocked());
+		
+		driver .pressKeyCode(AndroidKeyCode.HOME);
+		
 	}
 
 }
